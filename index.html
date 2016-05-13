@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <title>
+            Etsy App
+        </title>
+        <style>
+            html, body {
+            height: 100%;
+            background-color: #000;
+            }
+
+            html {
+            display: table;
+            width: 100%;
+            }
+
+            body {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            }
+
+            @-webkit-keyframes shadow {
+            0%, 100% {
+                opacity: .2;
+            }
+            50% {
+                opacity: 1;
+            }
+            }
+
+            @keyframes shadow {
+            0%, 100% {
+                opacity: .2;
+            }
+            50% {
+                opacity: 1;
+            }
+            }
+            .batman {
+            display: inline-block;
+            position: relative;
+            -webkit-animation: shadow 5s infinite;
+                    animation: shadow 5s infinite;
+            }
+            .batman::after {
+            content: '';
+            position: absolute;
+            border-right: solid 200px rgba(0, 0, 0, 0.4);
+            border-bottom: solid 200px transparent;
+            left: -105px;
+            }
+
+            .eye--left {
+            width: 0px;
+            border-top: solid 30px transparent;
+            border-right: solid 50px white;
+            -webkit-transform: rotate(50deg);
+                    transform: rotate(50deg);
+            position: absolute;
+            left: -65px;
+            }
+
+            .eye--right {
+            width: 0px;
+            border-top: solid 30px transparent;
+            border-left: solid 50px white;
+            -webkit-transform: rotate(-50deg);
+                    transform: rotate(-50deg);
+            position: absolute;
+            right: -65px;
+            }
+
+            .mouth {
+            width: 0px;
+            border-top: solid 30px transparent;
+            border-left: solid 55px #B19366;
+            border-right: solid 55px #B19366;
+            border-bottom: solid 60px #B19366;
+            position: absolute;
+            top: 70px;
+            left: -55px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="batman">
+            <div class="eye--left"></div>
+            <div class="eye--right"></div>
+            <div class="mouth"></div>
+        </div>
+    </body>
+</html>
