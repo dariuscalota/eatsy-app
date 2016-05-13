@@ -16,7 +16,7 @@ mongoose.connect('mongodb://sebastian:comedie11@ds023042.mlab.com:23042/data');
 // App Setup
 app.use(cors());
 app.use(morgan('combined'));
-app.use(bodyParser.json({ type: '*/*'}));
+app.use(bodyParser.json());
 router(app);
 
 // Server Setup
