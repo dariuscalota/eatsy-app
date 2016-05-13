@@ -1,0 +1,33 @@
+video#bgvid {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  /*z-index: -100;*/
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background: url("../images/cookies.png") no-repeat;
+  background-color: #F47B17;
+  background-size: cover;
+  opacity: 0.3;
+}
+.landing-form{
+  opacity: 0.9;
+}
+.x-btn-inner-default-toolbar-medium {
+  color: #F47B17 !important;
+}
+.dark-color-theme{
+  color: #374255 !important;
+}
+.x-field-focus .x-form-text-default {
+  border-bottom:1px solid #F47B17 !important;
+  box-shadow: 0 1px 0 0 #F47B17 !important;
+  -moz-box-shadow: 0 1px 0 0 #F47B17 !important;
+  -webkit-box-shadow: 0 1px 0 0 #F47B17 !important;
+}
