@@ -1,0 +1,19 @@
+{
+  "name": "eatsy-app",
+  "version": "1.0.0",
+  "description": "Eatsy is a platform on which you can find all nearby events related to food, based on your personal interests. Project was made for iTEC contest 2016",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dariuscalota/eatsy-app.git"
+  },
+  "author": "Darius Calota & Sebastian Oprea",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dariuscalota/eatsy-app/issues"
+  },
+  "homepage": "https://github.com/dariuscalota/eatsy-app#readme"
+}
