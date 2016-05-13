@@ -1,22 +1,26 @@
 {
   "name": "eatsy-app",
-  "version": "1.0.0",
-  "description": "Eatsy is a platform on which you can find all nearby events related to food, based on your personal interests. Project was made for iTEC contest 2016",
+  "version": "0.2.5",
+  "description": "A sample Node.js app using Express 4",
+  "engines": {
+    "node": "5.9.1"
+  },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "ejs": "^2.4.1",
+    "express": "^4.13.3"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dariuscalota/eatsy-app.git"
   },
-  "author": "Darius Calota & Sebastian Oprea",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/dariuscalota/eatsy-app/issues"
-  },
-  "homepage": "https://github.com/dariuscalota/eatsy-app#readme",
-  "dependencies": {
-    "fs": "0.0.2"
-  }
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
 }
