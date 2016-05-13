@@ -8,6 +8,8 @@ const router = require('./router');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
+app.use(express.static(__dirname + "/public"));
+
 // DB Setup
 mongoose.connect('mongodb://sebastian:comedie11@ds023042.mlab.com:23042/data');
 
