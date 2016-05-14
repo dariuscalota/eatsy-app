@@ -4,6 +4,7 @@ const User = require('../models/user');
 
 exports.createEvent = function(req, res, next) {
   const title = req.body.title;
+  const location = req.body.location;
   const description = req.body.description;
   const picture = req.body.picture;
   const owner = req.body.owner;
@@ -20,6 +21,7 @@ exports.createEvent = function(req, res, next) {
 
   const event = new Event({
     title: title,
+    location: location,
     description: description,
     picture: picture,
     owner: owner,
@@ -70,7 +72,9 @@ exports.editEvent =  function(req, res, next) {
   Event.findOne({'_id': req.params.id}, function(err, event) {
 
     if (req.body.title)
-     event.title = req.body.title;
+      event.title = req.body.title;
+    if (req.body.location)
+      event.location = req.body.location;
     if (req.body.description)
       event.description = req.body.description;
     if (req.body.location)

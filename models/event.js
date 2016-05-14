@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 // define our model
 const eventSchema = new Schema({
   // event description
-  title: { type: String, unique: true, lowercase:true },
+  title: { type: String },
+  location: {type: String },
   description: {type: String },
   picture: {type: String},
   owner: {type: String },
