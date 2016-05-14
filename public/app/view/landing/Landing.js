@@ -1,6 +1,5 @@
 Ext.define('Eatsy.view.landing.Landing', {
   extend: 'Ext.container.Container',
-  id: 'Sebastian',
   xtype: 'landing',
   requires: [
     'Ext.layout.container.Fit',
@@ -8,7 +7,6 @@ Ext.define('Eatsy.view.landing.Landing', {
     'Eatsy.view.landing.LandingController'
   ],
   controller: 'landing',
-  scrollable: true,
   plugins: [
     'viewport'
   ],

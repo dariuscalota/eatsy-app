@@ -18,18 +18,23 @@ Ext.define('Eatsy.view.landing.LandingController', {
         success: function(response) {
           console.log(response);
 
-          this.getView().destroy();
-          Ext.widget('app-main');
-
           var responseObj = Ext.JSON.decode(response.responseText, true);
-          localStorage.setItem("access_token", responseObj.token);
-          localStorage.setItem("email", responseObj.user.email);
-          localStorage.setItem("name", responseObj.user.name);
+
+
+          Eatsy.util.Util.user = JSON.parse(JSON.stringify(responseObj.user));
+          Eatsy.util.Util.token = responseObj.token;
+
+          localStorage.setItem("token", responseObj.token);
+          localStorage.setItem("user", JSON.stringify(responseObj.user));
           Ext.Ajax.setDefaultHeaders({
             'Accept':'application/json',
             'Content-Type':'application/json',
-            'Authorization':responseObj.token
+            'Authorization': responseObj.token
           });
+
+          this.getView().destroy();
+          Ext.widget((responseObj.user.location === "") ? 'firstuse' : 'app-main');
+
         }.bind(this),
         failure: function(response) {
           button.enable();
@@ -65,35 +70,25 @@ Ext.define('Eatsy.view.landing.LandingController', {
         success: function(response) {
           console.log(response);
 
-          this.getView().destroy();
-          Ext.widget('app-main');
-
           var responseObj = Ext.JSON.decode(response.responseText, true);
-          localStorage.setItem("access_token", responseObj.token);
-          localStorage.setItem("email", responseObj.user.email);
-          localStorage.setItem("name", responseObj.user.name);
+
+          Eatsy.util.Util.user = JSON.parse(JSON.stringify(responseObj.user));
+          Eatsy.util.Util.token = responseObj.token;
+
+          localStorage.setItem("token", responseObj.token);
+          localStorage.setItem("user", JSON.stringify(responseObj.user));
           Ext.Ajax.setDefaultHeaders({
             'Accept':'application/json',
             'Content-Type':'application/json',
-            'Authorization':responseObj.token
+            'Authorization': responseObj.token
           });
+
+          this.getView().destroy();
+          Ext.widget('firstuse');
         }.bind(this),
         failure: function(response) {
           button.enable();
           console.log(response);
-          // Ext.MessageBox.show({
-          //   title: translate('Login Error'),
-          //   msg: translate('Wrong Username or Password!'),
-          //   minHeight:200,
-          //   minWidth:400,
-          //   closable: false,
-          //   icon: Ext.MessageBox['ERROR'],
-          //   buttons: Ext.MessageBox.OK
-          // });
-          // LoginForm.unmask();
-          // // leave username in login form
-          // // but remove password
-          // client_secret_textfield.setValue('');
         }
       });
     }

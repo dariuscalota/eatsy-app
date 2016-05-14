@@ -49,6 +49,4 @@ Ext.define('Eatsy.view.main.Main', {
             html: '<h2>Content appropriate for the current navigation.</h2>'
         }]
     }]
-
-
 });
