@@ -18,10 +18,11 @@ module.exports = function(app) {
 
   app.put('/api/users/:id', requireAuth, function(req, res) {
      User.findById(req.params.id, function(err, user) {
-
-        user.location = req.body.location;
-        user.interest = req.body.interest;
-
+        if (err)
+          res.send(err);
+        user.set('location', req.body.location);
+        user.set('interest', req.body.interest);
+        
         user.save(function(err) {
           if (err) throw err;
         });
