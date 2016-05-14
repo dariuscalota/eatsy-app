@@ -12,12 +12,13 @@ module.exports = function(app) {
 
   app.get('/api/users', requireAuth, function(req, res) {
       User.find({}, function(err, users) {
+        delete user.password;
         res.json(users);
     });
   });
 
   app.post('/api/users/:id', requireAuth, function(req, res) {
-     User.find({'_id.oid': req.user.id.$oid}, function(err, user) {
+     User.find({'_id': req.params.id}, function(err, user) {
         if(req.user.email) {
           user.location = req.user.location;
         }
@@ -34,6 +35,7 @@ module.exports = function(app) {
   });
   app.get('/api/users/:id', function(req, res) {
      User.find({'_id': req.params.id}, function(err, user) {
+       delete user.password;
        res.json(user);
      });
    });
