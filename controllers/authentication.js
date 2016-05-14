@@ -1,6 +1,8 @@
 const jwt = require('jwt-simple');
 const User = require('../models/user');
 const config = require('../config');
+const bcrypt = require('bcrypt-nodejs');
+
 
 function tokenForUser(user) {
   const timestamp = new Date().getTime();
@@ -46,7 +48,7 @@ exports.signup = function(req, res, next) {
         user.password = hash;
       }
     }
-    
+
     const user = new User({
       email: email,
       password: password,
