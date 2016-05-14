@@ -33,6 +33,7 @@ module.exports = function(app) {
          user.interest = user.interest.concat(req.body.interest);
        if (req.body.picture)
         user.picture = req.body.picture;
+      user.isCreated = 7;
        user.save(function(err) {
          if (err) {
            return next(err);
