@@ -20,6 +20,11 @@ module.exports = function(app) {
         res.json(users);
     });
   });
+  app.get('/api/users/event/:id', requireAuth, function(req, res) {
+      User.find({}, function(err, users) {
+        res.json(users);
+    });
+  });
   app.get('/api/users/:id', requireAuth, function(req, res) {
      User.find({'_id': req.params.id}, function(err, user) {
        res.json(user);
@@ -64,6 +69,7 @@ module.exports = function(app) {
 
   app.post('/api/events', requireAuth, EventController.createEvent);
   app.get('/api/events', requireAuth, EventController.fetchEvents);
+  app.get('/api/events/users/:id', requireAuth, EventController.fetchEventUsers);
   app.get('/api/events/:id' , requireAuth, EventController.fetchEvent);
   app.put('/api/events/:id' , requireAuth, EventController.editEvent);
 

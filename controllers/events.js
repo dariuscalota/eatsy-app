@@ -1,5 +1,6 @@
 const jwt = require('jwt-simple');
 const Event = require('../models/event');
+const User = require('./models/user');
 
 exports.createEvent = function(req, res, next) {
   const title = req.body.title;
@@ -49,6 +50,20 @@ exports.fetchEvent = function(req, res, next) {
     res.json(event);
   });
 }
+exports.fetchEvent = function(req, res, next) {
+  Event.find({'_id': req.params.id}, function(err, event) {
+    var userArray = event.attendees;
+    var arrayLength = userArray.length;
+    var usersEvent = [];
+    for (var i = 0; i < arrayLength; i++) {
+      User.find({'_id': userArray[i]}, function(err, user) {
+        usersEvent.push(user);
+      });
+    }
+    res.json(usersEvent);
+  });
+}
+
 exports.editEvent =  function(req, res, next) {
   Event.findOne({'_id': req.params.id}, function(err, event) {
 
