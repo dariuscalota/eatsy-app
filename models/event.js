@@ -16,5 +16,5 @@ const eventSchema = new Schema({
   comments: {type: Array }
 });
 
-const ModelClass = mongoose.model('event', interestSchema);
+const ModelClass = mongoose.model('event', eventSchema);
 module.exports = ModelClass;
