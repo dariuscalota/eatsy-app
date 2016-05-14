@@ -52,9 +52,9 @@ exports.fetchEvent = function(req, res, next) {
 exports.editEvent =  function(req, res, next) {
   Event.findOne({'_id': req.params.id}, function(err, event) {
 
-    for (var property in req.body) {
-      if (req.body.property) {
-         event.property = req.body.property;
+    for (var p in req.body) {
+      if (req.body.hasOwnProperty(p)) {
+         event[property] = req.body[property];
       }
     }
     event.save(function(err) {
