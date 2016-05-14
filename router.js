@@ -54,6 +54,7 @@ module.exports = function(app) {
   });
 
 
+
   app.get('/api/event/events/:id' , function(req, res) {
     Event.find({}, function(err, events) {
       res.json(events);
