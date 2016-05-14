@@ -14,6 +14,10 @@ Ext.define('Eatsy.view.main.MainController', {
 
     alias: 'controller.main',
 
+    launch: function() {
+      Ext.Msg.alert('Hello', 'Hello '+ localStorage.getItem('name'));
+    },
+
     onClickButton: function () {
         Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
     },

@@ -1,5 +1,6 @@
 Ext.define('Eatsy.view.landing.Landing', {
   extend: 'Ext.container.Container',
+  id: 'Sebastian',
   xtype: 'landing',
   requires: [
     'Ext.layout.container.Fit',
@@ -7,6 +8,7 @@ Ext.define('Eatsy.view.landing.Landing', {
     'Eatsy.view.landing.LandingController'
   ],
   controller: 'landing',
+  scrollable: true,
   plugins: [
     'viewport'
   ],
@@ -17,9 +19,11 @@ Ext.define('Eatsy.view.landing.Landing', {
     {
       xtype: 'window',
       cls: 'landing-form',
+      header: false,
       closeable: false,
       autoShow: true,
       width: 500,
+      scrollable: true,
       layout: 'vbox',
 
       draggable: false,
@@ -35,7 +39,7 @@ Ext.define('Eatsy.view.landing.Landing', {
       items: [
         {
           xtype:'component',
-          html: '<center><img src="resources/images/logo-eatsy.PNG" width="300" height="200"/></center>'
+          html: '<br/><center><img src="resources/images/logo-eatsy.PNG" width="300" height="200"/></center>'
         },
         {
           xtype:'component',
@@ -89,7 +93,7 @@ Ext.define('Eatsy.view.landing.Landing', {
         {
           xtype:'component',
           margin: '0 0 0 10',
-          html: '<i>or</i> <br/> <h2 class="dark-color-theme"> Register </h2>'
+          html: '<h2 class="dark-color-theme"> Register </h2>'
         },
         {
           xtype: 'form',

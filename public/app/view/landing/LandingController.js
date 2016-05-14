@@ -17,47 +17,43 @@ Ext.define('Eatsy.view.landing.LandingController', {
         method: 'POST',
         success: function(response) {
           console.log(response);
+
           this.getView().destroy();
           Ext.widget('app-main');
-          // Ext.get('SavePassword').dom.click(); //Call Click Function in false submit Button
-          // response = Ext.JSON.decode(response.responseText, true);
-          // Mvp.util.Util.access_token = response.access_token;
-          // Mvp.util.Util.access_token_expires_in = response.expires_in;
-          // // Set the localStorage value to true
-          // localStorage.setItem("LoggedIn", true);
-          // localStorage.setItem("AccessToken", response.access_token);
-          // localStorage.setItem("RefreshToken", response.refresh_token);
-          // Ext.Ajax.setDefaultHeaders({
-          //   'Accept':'application/json',
-          //   'Content-Type':'application/json',
-          //   'Authorization':'Bearer '+ response.access_token
-          // });
+
+          var responseObj = Ext.JSON.decode(response.responseText, true);
+          localStorage.setItem("access_token", responseObj.token);
+          localStorage.setItem("email", responseObj.user.email);
+          localStorage.setItem("name", responseObj.user.name);
+          Ext.Ajax.setDefaultHeaders({
+            'Accept':'application/json',
+            'Content-Type':'application/json',
+            'Authorization':responseObj.token
+          });
         }.bind(this),
         failure: function(response) {
           button.enable();
           console.log(response);
-          // Ext.MessageBox.show({
-          //   title: translate('Login Error'),
-          //   msg: translate('Wrong Username or Password!'),
-          //   minHeight:200,
-          //   minWidth:400,
-          //   closable: false,
-          //   icon: Ext.MessageBox['ERROR'],
-          //   buttons: Ext.MessageBox.OK
-          // });
-          // LoginForm.unmask();
-          // // leave username in login form
-          // // but remove password
-          // client_secret_textfield.setValue('');
+          Ext.MessageBox.show({
+            title: 'Login Error',
+            msg:'Wrong Username or Password!',
+            minHeight:200,
+            minWidth:400,
+            closable: false,
+            icon: Ext.MessageBox['ERROR'],
+            buttons: Ext.MessageBox.OK
+          });
+          form.findField('password').reset();
         }
       });
     }
   },
-  onRegisterClick:function() {
+  onRegisterClick:function(button) {
     var me = this;
     var form = this.lookupReference('registerform');
     form = form.getForm();
     if(form.isValid() && form.findField('password').getValue() === form.findField('password_again').getValue()){
+      button.disable();
       Ext.Ajax.request({
         url: Eatsy.util.Config.getApiUrl() + "signup",
         headers: {
@@ -68,22 +64,22 @@ Ext.define('Eatsy.view.landing.LandingController', {
         method: 'POST',
         success: function(response) {
           console.log(response);
-          form.reset();
-          // Ext.get('SavePassword').dom.click(); //Call Click Function in false submit Button
-          // response = Ext.JSON.decode(response.responseText, true);
-          // Mvp.util.Util.access_token = response.access_token;
-          // Mvp.util.Util.access_token_expires_in = response.expires_in;
-          // // Set the localStorage value to true
-          // localStorage.setItem("LoggedIn", true);
-          // localStorage.setItem("AccessToken", response.access_token);
-          // localStorage.setItem("RefreshToken", response.refresh_token);
-          // Ext.Ajax.setDefaultHeaders({
-          //   'Accept':'application/json',
-          //   'Content-Type':'application/json',
-          //   'Authorization':'Bearer '+ response.access_token
-          // });
+
+          this.getView().destroy();
+          Ext.widget('app-main');
+
+          var responseObj = Ext.JSON.decode(response.responseText, true);
+          localStorage.setItem("access_token", responseObj.token);
+          localStorage.setItem("email", responseObj.user.email);
+          localStorage.setItem("name", responseObj.user.name);
+          Ext.Ajax.setDefaultHeaders({
+            'Accept':'application/json',
+            'Content-Type':'application/json',
+            'Authorization':responseObj.token
+          });
         }.bind(this),
         failure: function(response) {
+          button.enable();
           console.log(response);
           // Ext.MessageBox.show({
           //   title: translate('Login Error'),
