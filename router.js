@@ -9,11 +9,23 @@ const requireAuth = passport.authenticate('jwt', {session: false});
 const requireSignin = passport.authenticate('local', {session: false});
 
 module.exports = function(app) {
-  app.get('/api', requireAuth, function(req, res) {
+
+  app.get('/api/users', requireAuth, function(req, res) {
       User.find({}, function(err, users) {
         res.json(users);
     });
   });
+
+  app.get('/api/users:id', requireAuth, function(req, res) {
+      User.find({'_id.$oid': req.user.id.$oid}, function(err, user) {
+        if(req.user.location) {
+          u
+        }
+    });
+  });
+
+
+
   app.post('/api/signin', requireSignin,  Authentication.signin);
   app.post('/api/signup', Authentication.signup);
   app.get('/api/interests' , function(req, res) {
