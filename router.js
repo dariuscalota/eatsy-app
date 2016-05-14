@@ -5,6 +5,7 @@ const User = require('./models/user');
 const Interest = require('./models/interest');
 const Event =  require('./models/event')
 
+const ExtractJwt = require('passport-jwt').ExtractJwt;
 const requireAuth = passport.authenticate('jwt', {session: false});
 const requireSignin = passport.authenticate('local', {session: false});
 
@@ -57,11 +58,8 @@ module.exports = function(app) {
   });
 
   app.get('/api/events', requireAuth , function(req, res) {
-     var token = getToken(req.headers);
-     if (token) {
-       res.send(token);
-       var decoded = jwt.decode(token, config.secret);
-     }
+     const ExtractJwt = require('passport-jwt').ExtractJwt;
+     res.send(ExtractJwt);
   });
   app.get('/api/events/:id' , function(req, res) {
     Event.find({'_id': req.params.id}, function(err, events) {
