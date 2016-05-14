@@ -57,6 +57,7 @@ exports.fetchEventUsers = function(req, res, next) {
     var usersEvent = [];
     for (var i = 0; i < arrayLength; i++) {
       User.find({'_id': userArray[i]}, function(err, user) {
+        res.json(user);
         usersEvent.push(user);
       });
     }
