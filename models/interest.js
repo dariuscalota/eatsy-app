@@ -6,3 +6,7 @@ const interestSchema = new Schema({
   name: { type: String },
   points: {type: Number }
 });
+
+const ModelClass = mongoose.model('interest', interestSchema);
+
+module.exports = ModelClass;
