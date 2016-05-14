@@ -1,13 +1,14 @@
 Ext.define('Eatsy.view.landing.LandingController', {
   extend: 'Ext.app.ViewController',
   alias: 'controller.landing',
-  onLoginClick: function() {
+  onLoginClick: function(button) {
     var me = this;
     var form = this.lookupReference('loginform');
     form = form.getForm();
     if(form.isValid()){
+      button.disable();
       Ext.Ajax.request({
-        url: "https://eatsy-app.herokuapp.com/api/signin",
+        url: Eatsy.util.Config.getApiUrl() + "signin",
         headers: {
           'Content-Type' : 'application/json'
         },
@@ -16,6 +17,8 @@ Ext.define('Eatsy.view.landing.LandingController', {
         method: 'POST',
         success: function(response) {
           console.log(response);
+          this.getView().destroy();
+          Ext.widget('app-main');
           // Ext.get('SavePassword').dom.click(); //Call Click Function in false submit Button
           // response = Ext.JSON.decode(response.responseText, true);
           // Mvp.util.Util.access_token = response.access_token;
@@ -31,6 +34,7 @@ Ext.define('Eatsy.view.landing.LandingController', {
           // });
         }.bind(this),
         failure: function(response) {
+          button.enable();
           console.log(response);
           // Ext.MessageBox.show({
           //   title: translate('Login Error'),
@@ -55,7 +59,7 @@ Ext.define('Eatsy.view.landing.LandingController', {
     form = form.getForm();
     if(form.isValid() && form.findField('password').getValue() === form.findField('password_again').getValue()){
       Ext.Ajax.request({
-        url: "https://eatsy-app.herokuapp.com/api/signup",
+        url: Eatsy.util.Config.getApiUrl() + "signup",
         headers: {
           'Content-Type' : 'application/json'
         },
@@ -64,6 +68,7 @@ Ext.define('Eatsy.view.landing.LandingController', {
         method: 'POST',
         success: function(response) {
           console.log(response);
+          form.reset();
           // Ext.get('SavePassword').dom.click(); //Call Click Function in false submit Button
           // response = Ext.JSON.decode(response.responseText, true);
           // Mvp.util.Util.access_token = response.access_token;
