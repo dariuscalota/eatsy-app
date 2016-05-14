@@ -64,7 +64,6 @@ module.exports = function(app) {
 
   app.post('/api/events', requireAuth, EventController.createEvent);
   app.get('/api/events', requireAuth, EventController.fetchEvents);
-  app.get('/api/events/users/:id', requireAuth, EventController.fetchEventUsers);
   app.get('/api/events/:id', requireAuth, EventController.fetchEvent);
   app.put('/api/events/:id', requireAuth, EventController.editEvent);
 
