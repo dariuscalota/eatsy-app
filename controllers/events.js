@@ -1,6 +1,6 @@
 const jwt = require('jwt-simple');
 const Event = require('../models/event');
-const User = require('./models/user');
+const User = require('../models/user');
 
 exports.createEvent = function(req, res, next) {
   const title = req.body.title;
