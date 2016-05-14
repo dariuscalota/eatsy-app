@@ -33,7 +33,7 @@ module.exports = function(app) {
     });
   });
   app.get('/api/users/:id', function(req, res) {
-     User.find({'_id.oid': req.params.id}, function(err, user) {
+     User.find({'_id': req.params.id}, function(err, user) {
        res.json(user);
      });
    });
