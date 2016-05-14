@@ -26,6 +26,9 @@ module.exports = function(app) {
          user.location = req.body.location;
        if (req.body.interest)
          user.interest = user.interest.concat(req.body.interest);
+       if (req.body.picture)
+        user.picture = user.picture;
+        
        user.save(function(err) {
          if (err) {
            return next(err);

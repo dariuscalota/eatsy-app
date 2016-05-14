@@ -8,6 +8,7 @@ const userSchema = new Schema({
   name: { type: String },
   password: {type: String },
   location: {type: String },
+  picture: {type: String },
   interest: {type: Array }
 });
 

@@ -16,6 +16,7 @@ exports.signup = function(req, res, next) {
   const name = req.body.name;
   const password = req.body.password;
   const location = "";
+  const picture = "http://img5.cliparto.com/pic/s/204746/5100273-monochrome-round-user-icon.jpg";
   const interest = [];
 
   if (!email || !password) {
@@ -36,6 +37,7 @@ exports.signup = function(req, res, next) {
       password: password,
       name: name,
       location: location,
+      picture: picture,
       interest, interest
     });
     user.save(function(err) {
