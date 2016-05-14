@@ -17,15 +17,8 @@ module.exports = function(app) {
   });
 
   app.put('/api/users/:id', requireAuth, function(req, res) {
-     User.findById(req.params.id, function(err, user) {
-        if (err)
-          res.send(err);
-        user.set('location', req.body.location);
-        user.set('interest', req.body.interest);
-        
-        user.save(function(err) {
-          if (err) throw err;
-        });
+     User.findOne({'_id': req.params.id}, function(err, user) {
+      res.json(user);
     });
   });
 
