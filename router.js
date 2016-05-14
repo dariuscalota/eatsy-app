@@ -56,9 +56,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get('/api/events' , function(req, res) {
-      res.json(requireAuth);
-    });
+  app.get('/api/events', requireAuth , function(req, res) {
     res.json(user);
   });
   app.get('/api/events/:id' , function(req, res) {
