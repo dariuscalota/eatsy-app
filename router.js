@@ -16,14 +16,27 @@ module.exports = function(app) {
     });
   });
 
-  app.get('/api/users:id', requireAuth, function(req, res) {
-      User.find({'_id.$oid': req.user.id.$oid}, function(err, user) {
-        if(req.user.location) {
-          u
+  app.post('/api/users:id', requireAuth, function(req, res) {
+     User.find({'_id.$oid': req.user.id.$oid}, function(err, user) {
+        if(req.user.email) {
+          user.location = req.user.location;
         }
+        if(req.user.location) {
+          user.location = req.user.location;
+        }
+        if(req.user.interest) {
+          user.location = req.user.location;
+        }
+        user.save(function(err) {
+          if (err) throw err;
+        });
     });
   });
-
+  app.post('/api/users:id', function(req, res) {
+     User.find({'_id.$oid': req.user.id.$oid}, function(err, user) {
+       res.json(user);
+     });
+   });
 
 
   app.post('/api/signin', requireSignin,  Authentication.signin);
