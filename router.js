@@ -57,10 +57,7 @@ module.exports = function(app) {
   });
 
   app.get('/api/events' , function(req, res) {
-    User.findById(payload.sub, function(err, user) {
-      if (err) {  return done(err, false); }
-      if (user) { done(null, user); }
-      else { done(null, false); }
+      res.json(requireAuth);
     });
     res.json(user);
   });
