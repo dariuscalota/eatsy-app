@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Event = require('../models/event');
 
 // define our model
 const commentSchema = new Schema({
@@ -11,3 +10,5 @@ const commentSchema = new Schema({
   text: {type: String },
   status: {type: Number }
 });
+const ModelClass = mongoose.model('comment', commentSchema);
+module.exports = ModelClass;
