@@ -17,7 +17,7 @@ module.exports = function(app) {
   });
 
   app.put('/api/users/:id', requireAuth, function(req, res) {
-     User.findOne({_id: req.params.id}, function(err, user) {
+     User.findOne({'_id': req.params.id}, function(err, user) {
         if(req.body.user.email) {
           user.email = req.body.user.email;
         }
