@@ -57,17 +57,11 @@ module.exports = function(app) {
     });
   });
 
-  const jwtOptions = {
-    jwtFromRequest: ExtractJwt.fromHeader('authorization'),
-    secretOrKey: config.secret
-  };
 
   app.get('/api/events', requireAuth , function(req, res) {
-     const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done) {
-         User.findById(payload.sub, function(err, user) {
-           res.json(user);
-         }
-     }
+    Event.find({}, function(err, events) {
+      res.json(events);
+    });
   });
   app.get('/api/events/:id' , function(req, res) {
     Event.find({'_id': req.params.id}, function(err, events) {
