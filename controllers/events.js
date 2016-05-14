@@ -53,7 +53,7 @@ exports.editEvent =  function(req, res, next) {
   Event.findOne({'_id': req.params.id}, function(err, event) {
 
     for (var property in req.body) {
-      if (req.body.hasOwnProperty(property)) {
+      if (req.body.property) {
          event.property = req.body.property;
       }
     }
