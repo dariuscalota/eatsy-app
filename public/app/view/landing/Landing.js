@@ -95,6 +95,7 @@ Ext.define('Eatsy.view.landing.Landing', {
           xtype: 'form',
           bodyPadding: '0 24 24 24',
           name: 'registerform',
+          reference: 'registerform',
           scrollable: true,
           defaults: {
             anchor: '100%'
@@ -109,7 +110,7 @@ Ext.define('Eatsy.view.landing.Landing', {
             {
               xtype: 'textfield',
               allowBlank: false,
-              name: 'username',
+              name: 'email',
               emptyText: 'Email'
             },
             {
