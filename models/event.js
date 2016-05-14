@@ -3,17 +3,21 @@ const Schema = mongoose.Schema;
 
 // define our model
 const eventSchema = new Schema({
+  // event description
   title: { type: String, unique: true, lowercase:true },
   description: {type: String },
+  picture: {type: String},
   owner: {type: String },
-  created: {type: Date },
-  modified: {type: Date },
   start: {type: Date },
   end: {type: Date },
-  status: {type: Number },
+  interests: {type: Array },
+  comments: {type: Array },
   attendees: {type: Array },
-  invites: {type: Array },
-  comments: {type: Array }
+  created: {type: Date },
+  // metadata
+  modified: {type: Date },
+  status: {type: Number },
+  invites: {type: Array }
 });
 
 const ModelClass = mongoose.model('event', eventSchema);
