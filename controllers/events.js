@@ -5,7 +5,7 @@ exports.createEvent = function(req, res, next) {
   const title = req.body.title;
   const description = req.body.description;
   const picture = req.body.picture;
-  const owner =req.body.owner;
+  const owner = req.body.owner;
   const start = req.body.start;
   const end = req.body.end;
   const invites = req.body.invites;
@@ -36,10 +36,31 @@ exports.createEvent = function(req, res, next) {
     if (err) {
       return next(err);
     }
-    res.json({  });
+    res.json({ event: (event) });
   });
-});
+}
+exports.fetchEvents = function(req, res, next) {
+  Event.find({}, function(err, events) {
+    res.json(events);
+  });
+}
+exports.fetchEvent = function(req, res, next) {
+  Event.find({'_id': req.params.id}, function(err, event) {
+    res.json(event);
+  });
+}
+exports.editEvent =  function(req, res, next) {
+  Event.findOne({'_id': req.params.id}, function(err, event) {
+    for (var key in event) {
+      if (req.body[key])
+        event[key] = req.body[key];
+    }
+    event.save(function(err) {
+      if (err) {
+        return next(err);
+      }
+      res.json({ event: (event) });
+    });
 
-  // respond to request indicating the user was created
-
+ });
 }

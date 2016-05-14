@@ -1,4 +1,5 @@
 const Authentication = require('./controllers/authentication');
+const EventController = require('./controllers/events');
 const passportService = require('./services/passport');
 const passport = require('passport');
 const User = require('./models/user');
@@ -58,17 +59,11 @@ module.exports = function(app) {
     });
   });
 
+  app.post('/api/events', requireAuth, EventController.createEvent);
+  app.get('/api/events', requireAuth, EventController.fetchEvents);
+  app.get('/api/events/:id' , requireAuth, EventController.fetchEvent);
+  app.put('/api/events/:id' , requireAuth, EventController.editEvent);
 
-  app.get('/api/events', requireAuth , function(req, res) {
-    Event.find({}, function(err, events) {
-      res.json(events);
-    });
-  });
-  app.get('/api/events/:id' , function(req, res) {
-    Event.find({'_id': req.params.id}, function(err, events) {
-      res.json(events);
-    });
-  });
 
   app.use(function(req, res){
     res.send(404);
