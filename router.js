@@ -32,7 +32,7 @@ module.exports = function(app) {
         });
     });
   });
-  app.post('/api/users:id', function(req, res) {
+  app.get('/api/users:id', function(req, res) {
      User.find({'_id.$oid': req.user.id.$oid}, function(err, user) {
        res.json(user);
      });
