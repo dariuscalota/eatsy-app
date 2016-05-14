@@ -1,10 +1,13 @@
 const Authentication = require('./controllers/authentication');
 const EventController = require('./controllers/events');
+const CommentController = require('./controllers/comments');
+
+
 const passportService = require('./services/passport');
 const passport = require('passport');
+
 const User = require('./models/user');
 const Interest = require('./models/interest');
-const Event =  require('./models/event')
 
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const requireAuth = passport.authenticate('jwt', {session: false});
@@ -64,6 +67,9 @@ module.exports = function(app) {
   app.get('/api/events/:id' , requireAuth, EventController.fetchEvent);
   app.put('/api/events/:id' , requireAuth, EventController.editEvent);
 
+  app.post('/api/comments', requireAuth, CommentController.createComment);
+  app.get('/api/comments/:idEvent', requireAuth, CommentController.getEventComments);
+  app.put('/api/comments/:id', requireAuth, CommentController.editComment);
 
   app.use(function(req, res){
     res.send(404);
