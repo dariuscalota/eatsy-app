@@ -52,8 +52,7 @@ exports.fetchEvent = function(req, res, next) {
 }
 exports.fetchEventUsers = function(req, res, next) {
   Event.findOne({'_id': req.params.id}, function(err, event) {
-    var userArray = event.attendees;
-    User.find({'_id': { $in: userArray}, function(err, user) {
+    User.find({'_id': { $in: event.attendees}, function(err, user) {
           res.json(user);
     });
   }
