@@ -51,10 +51,12 @@ exports.fetchEvent = function(req, res, next) {
 }
 exports.editEvent =  function(req, res, next) {
   Event.findOne({'_id': req.params.id}, function(err, event) {
-    req.body.keys(obj).forEach(function(key) {
-      res.json(obj[key]);
-      event[key] = obj[key];
-    });
+
+    for (var property in req.body) {
+      if (req.body.hasOwnProperty(property)) {
+         event.property = req.body.property;
+      }
+    }
     event.save(function(err) {
       if (err) {
         return next(err);
