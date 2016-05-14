@@ -1,2 +1,2 @@
 // @tag full-page
-// @require C:\itec\client\app.js
+// @require C:\wamp\www\eatsy-app\public\app.js

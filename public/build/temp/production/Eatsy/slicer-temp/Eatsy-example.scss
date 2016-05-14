@@ -1,11 +1,17 @@
 $app-name:   'Eatsy' !default;
-$image-search-path: 'C:/itec/client/build/production/Eatsy/resources';
-$theme-name:   'theme-material' !default;
+$image-search-path: 'C:/wamp/www/eatsy-app/public/build/production/Eatsy/resources';
+$theme-name:   'theme-material-custom' !default;
 $include-eatsy-application: true;
+$include-eatsy-model-interest: true;
+$include-eatsy-store-interests: true;
+$include-eatsy-util-config: true;
+$include-eatsy-util-util: true;
+$include-eatsy-view-firstuse-firstuse: true;
+$include-eatsy-view-firstuse-firstusecontroller: true;
 $include-eatsy-view-landing-landing: true;
+$include-eatsy-view-landing-landingcontroller: true;
 $include-eatsy-view-main-main: true;
 $include-eatsy-view-main-maincontroller: true;
-$include-eatsy-view-main-mainmodel: true;
 $include-ext-abstractcomponent: true;
 $include-ext-abstractcontainer: true;
 $include-ext-abstractmanager: true;
@@ -953,8 +959,24 @@ $current-resource-root: $theme-material-resource-root;
 $relative-image-path-for-uis: $theme-material-resource-path;
 @import '../../../../../packages/theme-material/sass/etc/all';
 
+/* including package theme-material-custom */
+$theme-material-custom-resource-root: '' !default;
+$theme-material-custom-resource-path: 'images' !default;
+$current-package: 'theme-material-custom';
+$current-resource-root: $theme-material-custom-resource-root;
+$relative-image-path-for-uis: $theme-material-custom-resource-path;
+@import '../../../../../packages/local/theme-material-custom/sass/etc/all';
+
 
 /* ======================== VAR ======================== */
+
+/* including package theme-material-custom */
+$theme-material-custom-resource-root: '' !default;
+$theme-material-custom-resource-path: 'images' !default;
+$current-package: 'theme-material-custom';
+$current-resource-root: $theme-material-custom-resource-root;
+$relative-image-path-for-uis: $theme-material-custom-resource-path;
+@import '../../../../../packages/local/theme-material-custom/sass/var/Component';
 
 /* including package theme-material */
 $theme-material-resource-root: '' !default;

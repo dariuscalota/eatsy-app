@@ -57,7 +57,7 @@ Ext.define('Eatsy.view.firstuse.FirstUse', {
         id: 'card-0',
         items: [
           {
-            html: '<h3>Welcome! Let\'s set up your account in three eatsy steps.</h3><p>Step 1 of 3</p><p>Please write your location and press "Next" button to continue...</p>',
+            html: '<h3>Welcome! Let\'s set up your account in three eatsy steps.</h3><p>Step 1 of 3</p><p>Please write your location and press "Next" button to continue...</p>'
           },
           {
             xtype: 'textfield',
@@ -111,17 +111,16 @@ Ext.define('Eatsy.view.firstuse.FirstUse', {
               }
             },
             store: 'Interests',
-            tpl: new Ext.XTemplate (`
-                <div class="container-fuid">
-                  <ul class="list-group checked-list-box">
-                    <tpl for=".">
-                      <li class="list-group-item custom-list-group-item">
-                        {name}
-                      </li>
-                    </tpl>
-                  </ul>
-                </div>
-              `
+            tpl: new Ext.XTemplate (
+                '<div class="container-fuid">',
+                  '<ul class="list-group checked-list-box">',
+                    '<tpl for=".">',
+                      '<li class="list-group-item custom-list-group-item">',
+                        '{name}',
+                      '</li>',
+                    '</tpl>',
+                  '</ul>',
+                '</div>'
             ),
             itemSelector: 'li.list-group-item',
             selectionModel:{

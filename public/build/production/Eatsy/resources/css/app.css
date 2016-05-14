@@ -31,3 +31,25 @@ video#bgvid {
   -moz-box-shadow: 0 1px 0 0 #F47B17 !important;
   -webkit-box-shadow: 0 1px 0 0 #F47B17 !important;
 }
+.list-group-item-primary {
+    color: rgb(255, 255, 255);
+    background-color: #D8DEDE;
+}
+.custom-list-group-item{
+  cursor: pointer;
+  margin-top: 4px;
+  transition: 0.5s all;
+}
+
+.custom-list-group-item:hover{
+  background-color: rgba(255, 117, 0, 0.21) !important;
+
+}
+
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+  z-index: 2;
+  color: #fff;
+  font-size: larger;
+  background-color: #F78423 !important;
+  border-color: #F78423 !important;
+}
