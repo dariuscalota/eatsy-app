@@ -57,7 +57,11 @@ module.exports = function(app) {
   });
 
   app.get('/api/events', requireAuth , function(req, res) {
-    res.send(requireAuth.done.user);
+     var token = getToken(req.headers);
+     if (token) {
+       res.send(token);
+       var decoded = jwt.decode(token, config.secret);
+     }
   });
   app.get('/api/events/:id' , function(req, res) {
     Event.find({'_id': req.params.id}, function(err, events) {
