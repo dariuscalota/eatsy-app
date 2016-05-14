@@ -19,18 +19,6 @@ module.exports = function(app) {
   app.put('/api/users/:id', requireAuth, function(req, res) {
      User.findOne({'_id': req.params.id}, function(err, user) {
        res.json(req);
-       if(req.user.email) {
-         user.email = req.user.email;
-       }
-       if(req.user.location) {
-         user.location = req.user.location;
-       }
-       if(req.user.interest) {
-         user.interest = req.user.interest;
-       }
-       user.save(function(err) {
-         if (err) throw err;
-       });
     });
   });
 
