@@ -6,8 +6,8 @@ exports.createEvent = function(req, res, next) {
   const description = req.body.description;
   const picture = req.body.picture;
   const owner = req.body.owner;
-  const start = req.body.start;
-  const end = req.body.end;
+  const start = new Date();
+  const end = new Date();
   const invites = req.body.invites;
   const interests = req.body.interests;
 
