@@ -19,13 +19,13 @@ module.exports = function(app) {
   app.put('/api/users/:id', requireAuth, function(req, res) {
      User.find({'_id': req.params.id}, function(err, user) {
         if(req.user.email) {
-          user.location = req.user.location;
+          user.email = req.user.email;
         }
         if(req.user.location) {
           user.location = req.user.location;
         }
         if(req.user.interest) {
-          user.location = req.user.location;
+          user.interest = req.user.interest;
         }
         user.save(function(err) {
           if (err) throw err;
