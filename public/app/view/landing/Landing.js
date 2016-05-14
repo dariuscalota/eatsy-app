@@ -55,7 +55,7 @@ Ext.define('Eatsy.view.landing.Landing', {
             {
               xtype: 'textfield',
               allowBlank: false,
-              name: 'username',
+              name: 'email',
               emptyText: 'Email'
             },
             {
