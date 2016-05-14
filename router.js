@@ -57,9 +57,12 @@ module.exports = function(app) {
   });
 
   app.get('/api/events' , function(req, res) {
-    Event.find({}, function(err, events) {
-      res.json(events);
+    User.findById(payload.sub, function(err, user) {
+      if (err) {  return done(err, false); }
+      if (user) { done(null, user); }
+      else { done(null, false); }
     });
+    res.json(user);
   });
   app.get('/api/events/:id' , function(req, res) {
     Event.find({'_id': req.params.id}, function(err, events) {
