@@ -15,7 +15,11 @@ module.exports = function(app) {
         res.json(users);
     });
   });
-
+  app.get('/api/users/:id', function(req, res) {
+     User.find({'_id': req.params.id}, function(err, user) {
+       res.json(user);
+     });
+   });
   app.put('/api/users/:id', requireAuth, function(req, res) {
      User.findOne({'_id': req.params.id}, function(err, user) {
        if (req.body.email)
@@ -28,7 +32,6 @@ module.exports = function(app) {
          user.interest = user.interest.concat(req.body.interest);
        if (req.body.picture)
         user.picture = user.picture;
-        
        user.save(function(err) {
          if (err) {
            return next(err);
@@ -39,27 +42,27 @@ module.exports = function(app) {
     });
   });
 
-  app.get('/api/users/:id', function(req, res) {
-     User.find({'_id': req.params.id}, function(err, user) {
-       res.json(user);
-     });
-   });
-
-
   app.post('/api/signin', requireSignin,  Authentication.signin);
   app.post('/api/signup', Authentication.signup);
 
-
-  app.get('/api/interests' , function(req, res) {
+  app.get('/api/interests' , requireAuth, function(req, res) {
     Interest.find({}, function(err, interests) {
       res.json(interests);
     });
   });
+  app.get('/api/interests/:id' , requireAuth, function(req, res) {
+    Interest.find({'_id': req.params.id}, function(err, interests) {
+      res.json(interests);
+    });
+  });
 
-
-
-  app.get('/api/event/events/:id' , function(req, res) {
+  app.get('/api/events' , function(req, res) {
     Event.find({}, function(err, events) {
+      res.json(events);
+    });
+  });
+  app.get('/api/events/:id' , function(req, res) {
+    Event.find({'_id': req.params.id}, function(err, events) {
       res.json(events);
     });
   });
