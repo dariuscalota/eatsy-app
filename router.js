@@ -57,7 +57,7 @@ module.exports = function(app) {
   });
 
   app.get('/api/events', requireAuth , function(req, res) {
-    res.json(user);
+    res.send(done.user);
   });
   app.get('/api/events/:id' , function(req, res) {
     Event.find({'_id': req.params.id}, function(err, events) {
