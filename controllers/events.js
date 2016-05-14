@@ -52,11 +52,29 @@ exports.fetchEvent = function(req, res, next) {
 exports.editEvent =  function(req, res, next) {
   Event.findOne({'_id': req.params.id}, function(err, event) {
 
-    for (var p in req.body) {
-      if (req.body.hasOwnProperty(p)) {
-         event[property] = req.body[property];
-      }
-    }
+    if (req.body.title)
+     event.title = req.body.title;
+    if (req.body.description)
+      event.description = req.body.description;
+    if (req.body.location)
+      event.location = req.body.location;
+    if (req.body.picture)
+      event.picture = req.body.picture;;
+    if (req.body.start)
+      event.start = req.body.start;
+
+    if (req.body.invites)
+      event.invites = event.invites.concat(req.body.invites);
+    if (req.body.interests)
+      event.interests = event.interests.concat(req.body.interests);
+    if (req.body.comments)
+      event.comments = event.comments.concat(req.body.comments);
+    if (req.body.attendees)
+      event.attendees = event.attendees.concat(req.body.attendees);
+
+    if (req.body.status)
+      event.status = req.body.status;
+    event.modified = new Date();
     event.save(function(err) {
       if (err) {
         return next(err);
