@@ -16,7 +16,7 @@ module.exports = function(app) {
     });
   });
 
-  app.post('/api/users/:id', requireAuth, function(req, res) {
+  app.put('/api/users/:id', requireAuth, function(req, res) {
      User.find({'_id': req.params.id}, function(err, user) {
         if(req.user.email) {
           user.location = req.user.location;
