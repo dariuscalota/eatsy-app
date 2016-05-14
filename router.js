@@ -18,8 +18,14 @@ module.exports = function(app) {
 
   app.put('/api/users/:id', requireAuth, function(req, res) {
      User.findOne({'_id': req.params.id}, function(err, user) {
+       if (req.body.email)
+        user.email = req.body.email;
+       if (req.body.name)
+        user.name = req.body.name;
        if (req.body.location)
-        user.location = req.body.location;
+         user.location = req.body.location;
+       if (req.body.interest)
+         user.interest += req.body.interest;
        user.save(function(err) {
          if (err) {
            return next(err);
