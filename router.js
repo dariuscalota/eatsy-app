@@ -15,7 +15,7 @@ module.exports = function(app) {
   });
   app.post('/api/signin', requireSignin,  Authentication.signin);
   app.post('/api/signup', Authentication.signup);
-  app.get('/api/intersts', requireAuth, function(req, res) {
+  app.get('/api/interests', requireAuth, function(req, res) {
     Interest.find({}, function(err, interests) {
       res.json(interests);
     });
