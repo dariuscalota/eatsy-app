@@ -51,13 +51,12 @@ exports.fetchEvent = function(req, res, next) {
   });
 }
 exports.fetchEventUsers = function(req, res, next) {
-  Event.find({'_id': req.params.id}, function(err, event) {
+  Event.findOne({'_id': req.params.id}, function(err, event) {
     var userArray = event.attendees;
     var arrayLength = userArray.length;
     var usersEvent = [];
     for (var i = 0; i < arrayLength; i++) {
       User.find({'_id': userArray[i]}, function(err, user) {
-        res.json(user);
         usersEvent.push(user);
       });
     }
