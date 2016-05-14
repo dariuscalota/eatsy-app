@@ -12,7 +12,6 @@ module.exports = function(app) {
 
   app.get('/api/users', requireAuth, function(req, res) {
       User.find({}, function(err, users) {
-       delete user[password];
         res.json(users);
     });
   });
@@ -35,7 +34,6 @@ module.exports = function(app) {
   });
   app.get('/api/users/:id', function(req, res) {
      User.find({'_id': req.params.id}, function(err, user) {
-       delete user[password];
        res.json(user);
      });
    });
