@@ -17,16 +17,11 @@ module.exports = function(app) {
   });
 
   app.put('/api/users/:id', requireAuth, function(req, res) {
-     User.findOne({'_id': req.params.id}, function(err, user) {
-        if(req.body.user.email) {
-          user.email = req.body.user.email;
-        }
-        if(req.body.user.location) {
-          user.location = req.body.user.location;
-        }
-        if(req.body.user.interest) {
-          user.interest = req.body.user.interest;
-        }
+     User.findById(req.params.id, function(err, user) {
+
+        user.location = req.body.location;
+        user.interest = req.body.interest;
+
         user.save(function(err) {
           if (err) throw err;
         });
