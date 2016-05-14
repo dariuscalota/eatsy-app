@@ -25,7 +25,7 @@ module.exports = function(app) {
        if (req.body.location)
          user.location = req.body.location;
        if (req.body.interest)
-         user.interest += req.body.interest;
+         user.interest = user.interest.concat(req.body.interest);
        user.save(function(err) {
          if (err) {
            return next(err);
