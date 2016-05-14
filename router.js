@@ -32,7 +32,7 @@ module.exports = function(app) {
        if (req.body.interest)
          user.interest = user.interest.concat(req.body.interest);
        if (req.body.picture)
-        user.picture = user.picture;
+        user.picture = req.body.picture;
        user.save(function(err) {
          if (err) {
            return next(err);
