@@ -16,7 +16,7 @@ module.exports = function(app) {
     });
   });
 
-  app.post('/api/users:id', requireAuth, function(req, res) {
+  app.post('/api/users/:id', requireAuth, function(req, res) {
      User.find({'_id.$oid': req.user.id.$oid}, function(err, user) {
         if(req.user.email) {
           user.location = req.user.location;
@@ -32,7 +32,7 @@ module.exports = function(app) {
         });
     });
   });
-  app.get('/api/users:id', function(req, res) {
+  app.get('/api/users/:id', function(req, res) {
      User.find({'_id.$oid': req.params.id}, function(err, user) {
        res.json(user);
      });
