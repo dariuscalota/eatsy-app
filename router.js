@@ -20,11 +20,6 @@ module.exports = function(app) {
         res.json(users);
     });
   });
-  app.get('/api/users/event/:id', requireAuth, function(req, res) {
-      User.find({}, function(err, users) {
-        res.json(users);
-    });
-  });
   app.get('/api/users/:id', requireAuth, function(req, res) {
      User.find({'_id': req.params.id}, function(err, user) {
        res.json(user);

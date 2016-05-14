@@ -50,7 +50,7 @@ exports.fetchEvent = function(req, res, next) {
     res.json(event);
   });
 }
-exports.fetchEvent = function(req, res, next) {
+exports.fetchEventUsers = function(req, res, next) {
   Event.find({'_id': req.params.id}, function(err, event) {
     var userArray = event.attendees;
     var arrayLength = userArray.length;
@@ -63,7 +63,6 @@ exports.fetchEvent = function(req, res, next) {
     res.json(usersEvent);
   });
 }
-
 exports.editEvent =  function(req, res, next) {
   Event.findOne({'_id': req.params.id}, function(err, event) {
 
