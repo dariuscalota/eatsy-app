@@ -17,7 +17,7 @@ module.exports = function(app) {
   });
 
   app.put('/api/users/:id', requireAuth, function(req, res) {
-     User.find({'_id': req.params.id}, function(err, user) {
+     User.findOne({'_id': req.params.id}, function(err, user) {
         if(req.user.email) {
           user.email = req.user.email;
         }
@@ -32,6 +32,7 @@ module.exports = function(app) {
         });
     });
   });
+
   app.get('/api/users/:id', function(req, res) {
      User.find({'_id': req.params.id}, function(err, user) {
        res.json(user);
