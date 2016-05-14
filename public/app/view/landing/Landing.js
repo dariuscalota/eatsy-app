@@ -3,8 +3,10 @@ Ext.define('Eatsy.view.landing.Landing', {
   xtype: 'landing',
   requires: [
     'Ext.layout.container.Fit',
-    'Ext.plugin.Viewport'
+    'Ext.plugin.Viewport',
+    'Eatsy.view.landing.LandingController'
   ],
+  controller: 'landing',
   plugins: [
     'viewport'
   ],
@@ -43,6 +45,7 @@ Ext.define('Eatsy.view.landing.Landing', {
         {
           xtype: 'form',
           bodyPadding: '0 24 24 24',
+          reference: 'loginform',
           name: 'loginform',
           scrollable: true,
           defaults: {
@@ -77,7 +80,7 @@ Ext.define('Eatsy.view.landing.Landing', {
                 {
                   text: 'Login',
                   scale: 'medium',
-                  handler: 'onCancelClick'
+                  handler: 'onLoginClick'
                 }
               ]
             }
