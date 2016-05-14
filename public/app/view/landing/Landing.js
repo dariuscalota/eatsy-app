@@ -142,7 +142,7 @@ Ext.define('Eatsy.view.landing.Landing', {
                 {
                   text: 'Register',
                   scale: 'medium',
-                  handler: 'onCancelClick'
+                  handler: 'onRegisterClick'
                 }
               ]
             }
