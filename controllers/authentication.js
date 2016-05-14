@@ -13,9 +13,8 @@ exports.signin = function(req, res, next) {
 
 exports.signup = function(req, res, next) {
   const email = req.body.email;
+  const name = req.body.name;
   const password = req.body.password;
-  const location = req.body.location;
-  const interest = req.body.interest;
 
   if (!email || !password) {
     return res.status(422).send({ error: 'You must provide email and password'});
@@ -33,8 +32,7 @@ exports.signup = function(req, res, next) {
     const user = new User({
       email: email,
       password: password,
-      location: location,
-      interest: interest
+      name: name
     });
     user.save(function(err) {
       if (err) {
