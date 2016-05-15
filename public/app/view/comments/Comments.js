@@ -32,7 +32,7 @@ Ext.define('Eatsy.view.comments.Comments', {
                         ' {user}',
                         '<br>',
                         '<small>',
-                          'commented on {modified}',
+                          'commented on {[Eatsy.util.Util.dateTimeRenderer(values.modified)]}',
                         '</small>',
                       '</h4>',
                       '<p>',

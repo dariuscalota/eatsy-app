@@ -14,5 +14,6 @@ Ext.define('Eatsy.view.events.EventsController', {
     commentsStore.getProxy().setExtraParam('event',record.data._id);
     commentsStore.load();
     commentsView.show();
+    Ext.getCmp('attendButton').show();
   }
 });

@@ -18,7 +18,7 @@ Ext.define('Eatsy.view.events.Event', {
     {
       xtype: 'container',
       margin: '0 10 0 0',
-      height: 160,
+      height: 180,
       padding: '10 10 10 10',
       id: 'eventDescription',
       tpl: new Ext.XTemplate(
@@ -35,6 +35,7 @@ Ext.define('Eatsy.view.events.Event', {
                     '<h4 class="media-heading">{title}</h4>',
                     '<p>{description}</p>',
                     '<span class="text-primary"><h3>{[Eatsy.util.Util.dateTimeRenderer(values.modified)]}</h3></span>',
+										'<h4><span class="label label-info">Location: {location}</span></h4>',
                   '</div>',
                 '</div>',
               '</div>',
@@ -55,6 +56,9 @@ Ext.define('Eatsy.view.events.Event', {
       items: [
         {
           xtype: 'button',
+					id: 'attendButton',
+					disabled: true,
+					hidden: true,
           text:'Attend',
           width: 75,
           scale: 'medium'
