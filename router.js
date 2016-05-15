@@ -69,9 +69,10 @@ module.exports = function(app) {
   app.get('/api/events/:id', requireAuth, EventController.fetchEvent);
   app.put('/api/events/:id', requireAuth, EventController.editEvent);
   app.get('/api/events/users/:id', requireAuth, EventController.fetchEventUsers);
+  app.get('/api/events/priority/:location/:interests', requireAuth, EventController.fetchEventPriority);
 
   app.post('/api/comments', requireAuth, CommentController.createComment);
-  app.get('/api/comments/:idEvent', requireAuth, CommentController.getEventComments);
+  app.get('/api/comments', requireAuth, CommentController.getEventComments);
   app.put('/api/comments/:id', requireAuth, CommentController.editComment);
 
   app.post('/api/invite', requireAuth, function(req, res) {
@@ -97,7 +98,7 @@ module.exports = function(app) {
           }
         });
       }
-     res.send("e");
+     res.send("Added");
   });
   app.get('/api/invites/:id', requireAuth, InvitesController.fetchInvite);
   app.get('/api/invites/user/:id', requireAuth, InvitesController.fetchUserInvites);

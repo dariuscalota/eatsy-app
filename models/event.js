@@ -18,7 +18,8 @@ const eventSchema = new Schema({
   // metadata
   modified: {type: Date },
   status: {type: Number },
-  invites: {type: Array }
+  invites: {type: Array },
+  points: {type: Number }
 });
 
 const ModelClass = mongoose.model('event', eventSchema);

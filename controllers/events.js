@@ -12,6 +12,7 @@ exports.createEvent = function(req, res, next) {
   const end = new Date();
   const invites = req.body.invites;
   const interests = req.body.interests;
+  const points = 0;
 
   const comments = [];
   const attendees = [];
@@ -33,7 +34,8 @@ exports.createEvent = function(req, res, next) {
     attendees: attendees,
     status: status,
     created: created,
-    modified: modified
+    modified: modified,
+    points: points
   });
   event.save(function(err) {
     if (err) {
@@ -53,14 +55,13 @@ exports.fetchEvent = function(req, res, next) {
   });
 }
 
-
 function getAttendeesArray(eventID, next,callback){
   Event.findOne({'_id': eventID}, function(err, event) {
     callback(event.attendees);
   });
 }
 exports.fetchEventUsers = function(req, res) {
-  var eventId =  req.params.id;
+  var eventId =  req.params.event;
   getAttendeesArray(eventId,null, function(data) {
     User.find({'_id': { $in: data} }, function(err, user) {
         res.json(user);
@@ -68,8 +69,6 @@ exports.fetchEventUsers = function(req, res) {
   })
 
 }
-
-
 exports.editEvent =  function(req, res, next) {
   Event.findOne({'_id': req.params.id}, function(err, event) {
 
@@ -106,4 +105,25 @@ exports.editEvent =  function(req, res, next) {
     });
 
  });
+}
+
+exports.fetchEventPriority = function(req, res, next) {
+  const userLocation =  req.params.location;
+  const userInterests =  req.params.interests.split("&");
+  Event.find({}, function(err, events) {
+    var eventsSize = events.length;
+    for (var i = 0; i < eventsSize; i++) {
+        var points = 0;
+        var interestSize = events[i].interests.length;
+        for (var j = 0; j < interestSize; j++) {
+          for (var k = 0; k < userInterests.length; k++)
+            if (events[i].interests[j] == userInterests[k])
+              points += 10;
+        }
+        if (userLocation == events[i].location)
+          points += 50;
+        events[i].points = points;
+    }
+    res.json({ events: (events) });
+  });
 }
