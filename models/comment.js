@@ -4,9 +4,11 @@ const Schema = mongoose.Schema;
 // define our model
 const commentSchema = new Schema({
   user: { type: String },
+  event: { type: String },
   date: {type: Date },
   modified: {type: Date },
-  event: { type: String },
   text: {type: String },
-  status: {type: Boolean }
+  status: {type: Number }
 });
+const ModelClass = mongoose.model('comment', commentSchema);
+module.exports = ModelClass;
