@@ -26,7 +26,7 @@ exports.createComment = function(req, res, next) {
   });
 }
 exports.getEventComments = function(req, res, next) {
-  Comment.find({"event": req.params('event')}, function(err, comments) {
+  Comment.find({"event": req.param('event')}, function(err, comments) {
     res.json({ comments: (comments) });
   });
 }
