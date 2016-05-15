@@ -1,9 +1,9 @@
-Ext.define('Eatsy.store.Interests', {
+Ext.define('Eatsy.store.Events', {
 	extend: 'Ext.data.Store',
-	alias: 'store.interests',
+	alias: 'store.events',
 
 	requires: [
-		'Eatsy.model.Interest',
+		'Eatsy.model.Event',
 		'Eatsy.util.Config'
 	],
 
@@ -16,7 +16,7 @@ Ext.define('Eatsy.store.Interests', {
 				startParam: false,
     		limitParam: false,
 				type: 'rest',
-			  url: Eatsy.util.Config.getApiUrl() +'interests',
+			  url: Eatsy.util.Config.getApiUrl() +'events',
 				reader: {
 					type: 'json'
 				},
@@ -25,8 +25,8 @@ Ext.define('Eatsy.store.Interests', {
 				}
 			},
 			autoLoad: false,
-			storeId: 'Interests',
-			model: 'Eatsy.model.Interest'
+			storeId: 'Events',
+			model: 'Eatsy.model.Event'
 		}, cfg)]);
 	}
 });

@@ -9,7 +9,9 @@ Ext.define('Eatsy.view.main.Main', {
   extend: 'Ext.container.Container',
   requires: [
     'Eatsy.view.main.MainController',
-    'Ext.plugin.Viewport'
+    'Ext.plugin.Viewport',
+    'Eatsy.view.events.Events',
+    'Eatsy.view.events.CreateEvent'
   ],
 
   plugins: [
@@ -28,22 +30,13 @@ Ext.define('Eatsy.view.main.Main', {
       xtype: 'container',
       region: 'north',
       html: '<h3>Title n stuff</h3>',
-      height: 250,
+      flex: 1,
       split: true
     },
     {
-      xtype: 'panel',
-      region: 'west',
-      html: '<ul><li>This area is commonly used for navigation, for example, using a "tree" component.</li></ul>',
-      width: 250,
-      split: true,
-      tbar: [{
-        text: 'Button',
-        handler: 'onClickButton'
-      }]
-    },{
       region: 'center',
       xtype: 'tabpanel',
+      flex:9,
       tabBar: {
         layout: {
           pack: 'center'
@@ -51,13 +44,18 @@ Ext.define('Eatsy.view.main.Main', {
         border: false
       },
       defaults: {
-        iconAlign: 'top',
         bodyPadding: 15
       },
-      items:[{
-        title: 'Tab 1',
-        html: '<h2>Content appropriate for the current navigation.</h2>'
-      }]
+      items:[
+        {
+          title: 'Profile',
+          html: '<h2>Content appropriate for the current navigation.</h2>'
+        },
+        {
+          title: 'Events',
+          xtype: 'events'
+        }
+      ]
     }
   ]
 });
