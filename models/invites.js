@@ -9,3 +9,6 @@ const inviteSchema = new Schema({
   date: {type: Date },
   status: {type: Number }
 });
+
+const ModelClass = mongoose.model('invite', inviteSchema);
+module.exports = ModelClass;

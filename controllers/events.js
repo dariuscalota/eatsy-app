@@ -53,6 +53,7 @@ exports.fetchEvent = function(req, res, next) {
   });
 }
 
+
 function getAttendeesArray(eventID, next,callback){
   Event.findOne({'_id': eventID}, function(err, event) {
     callback(event.attendees);
@@ -67,6 +68,7 @@ exports.fetchEventUsers = function(req, res) {
   })
 
 }
+
 
 exports.editEvent =  function(req, res, next) {
   Event.findOne({'_id': req.params.id}, function(err, event) {

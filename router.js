@@ -1,12 +1,14 @@
 const Authentication = require('./controllers/authentication');
 const EventController = require('./controllers/events');
 const CommentController = require('./controllers/comments');
+const InvitesController = require('./controllers/invites');
 
 
 const passportService = require('./services/passport');
 const passport = require('passport');
 
 const User = require('./models/user');
+const Invite = require('./models/invites');
 const Interest = require('./models/interest');
 
 const ExtractJwt = require('passport-jwt').ExtractJwt;
@@ -71,6 +73,34 @@ module.exports = function(app) {
   app.post('/api/comments', requireAuth, CommentController.createComment);
   app.get('/api/comments/:idEvent', requireAuth, CommentController.getEventComments);
   app.put('/api/comments/:id', requireAuth, CommentController.editComment);
+
+  app.post('/api/invite', requireAuth, function(req, res) {
+
+      const status = 0;
+      const date = new Date();
+      const sender = req.body.sender;
+      const event = req.body.event;
+      var arrsize = req.body.reciever.length;
+      const current = "";
+      var invite = new Invite({
+          status: status,
+          sender: sender,
+          event: event,
+          date: date,
+          reciever: current
+      });
+      for (var i = 0; i < arrsize; ++i) {
+        invite.reciever = req.body.reciever[i];
+        invite.save(function(err) {
+          if (err) {
+            return next(err);
+          }
+        });
+      }
+     res.send("e");
+  });
+  app.get('/api/invites/:id', requireAuth, InvitesController.fetchInvite);
+  app.get('/api/invites/user/:id', requireAuth, InvitesController.fetchUserInvites);
 
   app.use(function(req, res){
     res.send(404);
