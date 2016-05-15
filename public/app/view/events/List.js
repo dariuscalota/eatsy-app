@@ -7,7 +7,7 @@ Ext.define('Eatsy.view.events.List', {
 
 
   listeners: {
-    rowclick: 'onRowClick',
+    rowclick: 'onEventSelect',
     render: function() {
       this.getStore().load();
     }
@@ -31,9 +31,13 @@ Ext.define('Eatsy.view.events.List', {
   ],
   tools:[{
     type:'refresh',
-    tooltip: 'Refresh form Data',
+    tooltip: 'Refresh Events',
     handler: function(event, toolEl, panelHeader) {
       this.up('panel').getStore().load();
     }
+  },{
+    type:'plus',
+    tooltip: 'Add Event',
+    handler: 'onCreateEvent'
   }]
 });

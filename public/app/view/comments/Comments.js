@@ -1,0 +1,55 @@
+Ext.define('Eatsy.view.comments.Comments', {
+  extend: 'Ext.view.View',
+  hidden: true,
+  id: 'commentsView',
+  xtype: 'comments',
+    width:'96%',
+    reference: 'interestsDataView',
+    listeners: {
+      render: function() {
+        this.getStore().load();
+      }
+    },
+    store: 'Comments',
+    tpl: new Ext.XTemplate (
+      '<div class="container-fluid">',
+        '<div class="panel panel-default">',
+          '<div class="panel-heading">',
+            '<h3 class="panel-title">',
+              'Recent Comments',
+            '</h3>',
+          '</div>',
+          '<div class="panel-body">',
+            '<tpl if="values && values.length">',
+              '<ul class="media-list">',
+                '<tpl for=".">',
+                  '<li class="media media-selector">',
+                    '<div class="media-left">',
+                      '<img src="" class="img-circle">',
+                    '</div>',
+                    '<div class="media-body">',
+                      '<h4 class="media-heading">',
+                        ' {user}',
+                        '<br>',
+                        '<small>',
+                          'commented on {modified}',
+                        '</small>',
+                      '</h4>',
+                      '<p>',
+                        '{text}',
+                      '</p>',
+                    '</div>',
+                  '</li>',
+                  '</tpl>',
+              '</ul>',
+            '<tpl else>',
+              '<i>No comments</i>',
+            '</tpl>',
+          '</div>',
+        '</div>',
+      '</div>'
+
+    ),
+    itemSelector: 'li.media.media-selector',
+    disableSelection: true
+});

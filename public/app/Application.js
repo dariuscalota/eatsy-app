@@ -25,7 +25,8 @@ Ext.define('Eatsy.Application', {
   stores: [
     'Interests',
     'Events',
-    'Users'
+    'Users',
+    'Comments'
   ],
 
   launch: function () {

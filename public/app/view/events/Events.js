@@ -2,6 +2,7 @@ Ext.define('Eatsy.view.events.Events', {
   extend: 'Ext.container.Container',
   requires: [
     'Eatsy.view.events.EventsController',
+    'Eatsy.view.events.Event',
     'Eatsy.view.events.List'
   ],
   xtype: 'events',
@@ -21,24 +22,8 @@ Ext.define('Eatsy.view.events.Events', {
     },
     {
       region: 'center',
-      xtype: 'tabpanel',
-      flex:7,
-      defaults: {
-        bodyPadding: 15,
-        scrollable: true,
-        closable: true,
-        border: false
-      },
-      items:[
-        {
-          title: 'Event1',
-          html: '<h2>Content appropriate for the current navigation.</h2>'
-        },
-        {
-          title: 'Event2',
-          html: '<h2>Content appropriate for the current navigation.</h2>'
-        }
-      ]
+      xtype: 'event',
+      flex:7
     }
   ]
 });
