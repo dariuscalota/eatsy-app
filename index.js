@@ -19,7 +19,15 @@ app.use(morgan('combined'));
 app.use(bodyParser.json());
 router(app);
 
+
+
 // Server Setup
 const port = process.env.PORT || 5000;
 const server = http.createServer(app);
 server.listen(port);
+
+const io = require('socket.io')(server);
+
+io.on('connection', function(socket){
+  console.log('a user connected');
+});
